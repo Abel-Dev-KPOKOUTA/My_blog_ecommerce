@@ -1,0 +1,40 @@
+{% extends 'blog/navigation_bar.html' %}
+
+{% block contenu %}
+<div class="container mb-6">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="text-center mt-2">Detail de l'article</h1>
+            <img src="{{ article.image.url }}" alt="info image" style="max-width:600px; max-height: 500px;">
+            <h2>{{article.title}}</h2>
+            <p>{{article.description}}</p>
+        </div>
+        <div class="col-md-4">
+            <h3 class="text-center mt-2">Les articles en relations</h1>
+                <div class="row">
+                    {% for art_en_rlt in article_en_relation %}
+                    {% if art_en_rlt != article %}
+                        <div class="container col-md-7 mb-1">
+                            <a href="{% url 'blog_site:article_info' art_en_rlt.id %}">
+                                <img src="{{ art_en_rlt.image.url }}" alt="info image" style="max-width: 210px;">
+                            </a>
+                        </div>
+                        <div class="container col-md-5">
+                            <p class="card-text" style="color:#007bff ;font-weight: bold;"><a href="{% url 'blog_site:article_info' art_en_rlt.id %}">{{ art_en_rlt.title}}</a></p>
+                            <p>{{ art_en_rlt.description|truncatewords:7}}</p>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block pied_page %}
+
+{% include 'blog/footer.html' %}
+
+{% endblock %}

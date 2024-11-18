@@ -1,0 +1,36 @@
+{% extends 'blog/navigation_bar.html' %}
+
+<title> {% block title%} Connexion {% endblock %}</title>
+
+{% block contenu %}
+
+<div class="container mb-6">
+    <div class="col-md-12 mt-5">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger text-center"> <strong> {{ message }} </strong></div>
+            {% endfor %}
+        {% endif %}
+        <form method="post" action="{% url 'authentification:user_connexion' %}">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-header text-center">
+                    <i class="fas fa-user"></i> Connexion au blog
+                </div>
+                <div class="card-body">
+                    {{ formulaire.as_p }}
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary btn-block mb-4" type="submit">Se connecter</button>
+                    <p>Vous n'avez pas de compte ? <a href="{% url 'authentification:user_inscription' %}">Créer le compte </a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block pied_page %} 
+{% include "blog/footer.html" %}
+{% endblock %}
