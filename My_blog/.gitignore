@@ -1,0 +1,5 @@
+# Ignorer les fichiers de base de données
+db.sqlite3
+
+# Ignorer les environnements virtuels
+venv/
