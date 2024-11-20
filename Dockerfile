@@ -1,26 +1,29 @@
-# Use the official Python image as the base image
+# Utiliser l'image officielle Python
 FROM python:3.12.3
 
-# Create a user and group 'appuser', and create a home directory
+# Créer un utilisateur et groupe 'appuser', et créer un répertoire home
 RUN groupadd -r appuser && useradd -r -g appuser -m -d /home/appuser appuser
 
-# Set the working directory in the container
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copy the application files into the working directory
+# Copier les fichiers d'application dans le répertoire de travail
 COPY . /app
 
-# Change the ownership of the necessary directories
+# Assurer que l'utilisateur appuser est propriétaire des répertoires
 RUN chown -R appuser:appuser /app /home/appuser
 
-# Switch to the non-root user
+# Ajouter le répertoire pip local de l'utilisateur au PATH
+ENV PATH="/home/appuser/.local/bin:${PATH}"
+
+# Basculer vers l'utilisateur non-root
 USER appuser
 
-# Upgrade pip without using cache
+# Mettre à jour pip sans utiliser de cache
 RUN pip install --no-cache-dir --upgrade pip
 
-# Install the application dependencies without using cache
+# Installer les dépendances de l'application sans utiliser de cache
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Define the entry point for the container
+# Définir le point d'entrée pour le conteneur
 CMD ["python", "My_blog/manage.py", "runserver", "0.0.0.0:8000"]
