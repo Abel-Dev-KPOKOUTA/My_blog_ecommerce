@@ -20,7 +20,7 @@ ENV PATH="/home/appuser/.local/bin:${PATH}"
 USER appuser
 
 # Mettre à jour pip sans utiliser de cache
-RUN pip install --no-cache-dir --upgrade pip
+RUN python -m pip install --no-cache-dir --upgrade pip
 
 # Installer les dépendances de l'application sans utiliser de cache
 RUN pip install --no-cache-dir -r /app/requirements.txt
