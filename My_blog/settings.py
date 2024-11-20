@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'django_extensions',
     'app_authentification',
     'app_admin',
+    'corsheaders',  # Ajouté pour gérer CORS
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Ajouté pour gérer CORS
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-fr'
 
-TIME_ZONE ='Africa/Porto-Novo'
+TIME_ZONE = 'Africa/Porto-Novo'
 
 USE_I18N = True
 
@@ -126,14 +128,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,"blog/static")
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "blog/static"),
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Pour collecter les fichiers statiques
 
-MEDIA_ROOT=os.path.join(BASE_DIR, "media")
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
@@ -142,4 +146,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Pour l'authentification des utilisateurs ... 
 
-LOGIN_URL='/blog/authentification/connexion/'   # On mets l'url et non le nom des urls ...
+LOGIN_URL = '/blog/authentification/connexion/'   # On mets l'url et non le nom des urls ...
+
+# CORS Configuration
+CORS_ALLOWED_ORIGINS = [
+    "https://siteecommerceblog-32ehe567.b4a.run",
+    # Ajoutez d'autres origines si nécessaire
+]
+
+# Trusted CSRF Origins
+CSRF_TRUSTED_ORIGINS = [
+    "https://siteecommerceblog-32ehe567.b4a.run",
+    # Ajoutez d'autres origines si nécessaire
+]
