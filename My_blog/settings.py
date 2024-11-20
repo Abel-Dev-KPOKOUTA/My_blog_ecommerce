@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-p@89hc)@7%hx@qrsj6aauw(=_r&t@vvox$%w-ah0mv2b!di_ff
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'node293a.containers.back4app.com',
+    'siteecommerce9-7wbuemua.b4a.run',
+]
 
 
 # Application definition
