@@ -2,14 +2,13 @@
 FROM python:3.12.3
 
 # Set the working directory in the container
-WORKDIR /My_blog/
+WORKDIR /app
 
 # Copy the application files into the working directory
-COPY . /My_blog/
+COPY . /app
 
 # Install the application dependencies
 RUN pip install -r requirements.txt
 
 # Define the entry point for the container
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
+CMD ["python", "My_blog/manage.py", "runserver", "0.0.0.0:8000"]
