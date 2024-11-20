@@ -30,3 +30,49 @@ EXPOSE 8000
 
 # Définir le point d'entrée pour le conteneur (modifié pour être cohérent avec la structure)
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+
+
+
+FROM python:3.12.3
+
+RUN groupadd -r appuser && useradd -r -g appuser -m -d /home/appuser appuser
+
+WORKDIR /app
+
+COPY . /app
+
+RUN chown -R appuser:appuser /app /home/appuser
+
+ENV PATH="/home/appuser/.local/bin:${PATH}"
+
+USER appuser
+
+RUN python -m pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r /app/requirements.txt
+EXPOSE 8000
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "My_blog.wsgi:application"]
+
+
+
+
+FROM python:3.12.3
+
+RUN groupadd -r appuser && useradd -r -g appuser -m -d /home/appuser appuser
+
+WORKDIR /app
+
+COPY . /app
+
+RUN chown -R appuser:appuser /app /home/appuser
+
+ENV PATH="/home/appuser/.local/bin:${PATH}"
+
+USER appuser
+
+RUN python -m pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r /app/requirements.txt
+EXPOSE 8000
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "My_blog.wsgi:application"]
