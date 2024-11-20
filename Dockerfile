@@ -10,17 +10,17 @@ WORKDIR /app
 # Copy the application files into the working directory
 COPY . /app
 
-# Change the ownership of the files to the non-root user
-RUN chown -R appuser:appuser /app
+# Change the ownership of the necessary directories
+RUN chown -R appuser:appuser /app /home/appuser
 
 # Switch to the non-root user
 USER appuser
 
-# Upgrade pip to the latest version
-RUN pip install --user --upgrade pip
+# Upgrade pip without using cache
+RUN pip install --no-cache-dir --upgrade pip
 
-# Install the application dependencies
-RUN pip install --user -r /app/requirements.txt
+# Install the application dependencies without using cache
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Define the entry point for the container, updating the path to manage.py
+# Define the entry point for the container
 CMD ["python", "My_blog/manage.py", "runserver", "0.0.0.0:8000"]
