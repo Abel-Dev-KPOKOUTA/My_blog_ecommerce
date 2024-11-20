@@ -1,8 +1,8 @@
 # Use the official Python image as the base image
 FROM python:3.12.3
 
-# Create a user and group 'appuser'
-RUN groupadd -r appuser && useradd -r -g appuser appuser
+# Create a user and group 'appuser', and create a home directory
+RUN groupadd -r appuser && useradd -r -g appuser -m -d /home/appuser appuser
 
 # Set the working directory in the container
 WORKDIR /app
