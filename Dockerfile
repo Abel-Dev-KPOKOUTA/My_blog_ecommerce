@@ -2,10 +2,10 @@
 FROM python:3.12.3
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /My_blog/
 
 # Copy the application files into the working directory
-COPY . /app
+COPY . /My_blog/
 
 # Install the application dependencies
 RUN pip install -r requirements.txt
