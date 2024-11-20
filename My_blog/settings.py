@@ -29,8 +29,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'node292a.containers.back4app.com',
-    'siteecommerce10-6vswi5fl.b4a.run',
+    'node293a.containers.back4app.com',
+    'siteecommerceblog-32ehe567.b4a.run',
+    # Ajoutez tout autre hôte ou domaine ici
 ]
 
 
