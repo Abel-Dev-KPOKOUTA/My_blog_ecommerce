@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'node294a.containers.back4app.com',
     'siteecommerceblog-32ehe567.b4a.run',
+    'node294a.containers.back4app.com',
     # Ajoutez tout autre hôte ou domaine ici
 ]
 
