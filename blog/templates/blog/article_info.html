@@ -14,22 +14,34 @@
             <p>{{article.description}}</p>
         </div>
         <div class="col-md-4">
-            <h3 class="text-center mt-2">Les articles en relations</h1>
-                <div class="row">
-                    {% for art_en_rlt in article_en_relation %}
-                    {% if art_en_rlt != article %}
-                        <div class="container col-md-7 mb-1">
-                            <a href="{% url 'blog_site:article_info' art_en_rlt.id %}">
-                                <img src="{{ art_en_rlt.image.url }}" alt="info image" style="max-width: 210px;">
-                            </a>
-                        </div>
-                        <div class="container col-md-5">
-                            <p class="card-text" style="color:#007bff ;font-weight: bold;"><a href="{% url 'blog_site:article_info' art_en_rlt.id %}">{{ art_en_rlt.title}}</a></p>
-                            <p>{{ art_en_rlt.description|truncatewords:7}}</p>
-                        </div>
-                    {% endif %}
-                    {% endfor %}
+            <h3 class="text-center mt-2">Les articles en relations
+            </h3>
+                {% if article_en_relation %}
+                    <div class="row">
+                        {% for art_en_rlt in article_en_relation %}
+                        {% if art_en_rlt != article %}
+                            <div class="container col-md-7 mb-1">
+                                <a href="{% url 'blog_site:article_info' art_en_rlt.id %}">
+                                    {% if art_en_rlt.image %}
+                                    <img src="{{ art_en_rlt.image.url }}" alt="info image" style="max-width: 210px;">
+                                    {% else %}
+                                    <img src="/static/images/default_image.jpg" alt="info default" style="max-width: 210px;">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="container col-md-5">
+                                <p class="card-text" style="color:#007bff ;font-weight: bold;"><a href="{% url 'blog_site:article_info' art_en_rlt.id %}">{{ art_en_rlt.title}}</a></p>
+                                <p>{{ art_en_rlt.description|truncatewords:7}}</p>
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                <div class="container col-md-5 mb-1">
+                    Pas d'article en relations ...
                 </div>
+                {% endif %}
+
         </div>
     </div>
 </div>
