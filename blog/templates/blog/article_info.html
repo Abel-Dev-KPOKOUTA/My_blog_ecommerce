@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8">
             <h1 class="text-center mt-2">Detail de l'article</h1>
-            <img src="{{ article.image.url }}" alt="info image" style="max-width:600px; max-height: 500px;">
+            <img src="{{ article.image.url }}" alt="info image" style="max-width: 100%; max-height: 150px;">
             <h2>{{article.title}}</h2>
             <p>{{article.description}}</p>
         </div>
@@ -16,7 +16,7 @@
                     {% if art_en_rlt != article %}
                         <div class="container col-md-7 mb-1">
                             <a href="{% url 'blog_site:article_info' art_en_rlt.id %}">
-                                <img src="{{ art_en_rlt.image.url }}" alt="info image" style="max-width: 100%; max-height: 150px;">
+                                <img src="{{ art_en_rlt.image.url }}" alt="info image" style="max-width: 210px;">
                             </a>
                         </div>
                         <div class="container col-md-5">
@@ -29,7 +29,6 @@
         </div>
     </div>
 </div>
-
 
 {% endblock %}
 
