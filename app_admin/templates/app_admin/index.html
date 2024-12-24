@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau Dynamique</title>
+    <title>Tableau de Bord E-commerce</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,75 +29,76 @@
             color: #333;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 45%;
+            text-align: center;
         }
 
-        th {
-            background-color: #f2f2f2;
+        .card h2 {
+            margin: 0 0 10px;
+            color: #333;
         }
 
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
+        .card p {
+            margin: 0;
+            color: #666;
         }
 
-        button:hover {
-            background-color: #45a049;
+        .card .value {
+            font-size: 2em;
+            color: #4CAF50;
+        }
+
+        .card .description {
+            font-size: 1em;
+            color: #999;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Tableau Dynamique</h1>
-        <table id="dynamicTable">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Âge</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Les lignes seront ajoutées ici dynamiquement -->
-            </tbody>
-        </table>
-        <button id="addRowBtn">Ajouter une ligne</button>
+        <h1>Tableau de Bord E-commerce</h1>
+        <div class="dashboard">
+            <div class="card">
+                <h2>Ventes</h2>
+                <p class="value" id="salesValue">0</p>
+                <p class="description">Total des ventes</p>
+            </div>
+            <div class="card">
+                <h2>Produits</h2>
+                <p class="value" id="productsValue">0</p>
+                <p class="description">Total des produits</p>
+            </div>
+            <div class="card">
+                <h2>Utilisateurs</h2>
+                <p class="value" id="usersValue">0</p>
+                <p class="description">Total des utilisateurs</p>
+            </div>
+            <div class="card">
+                <h2>Commandes</h2>
+                <p class="value" id="ordersValue">0</p>
+                <p class="description">Total des commandes</p>
+            </div>
+        </div>
     </div>
     <script>
-        document.getElementById('addRowBtn').addEventListener('click', function() {
-            var table = document.getElementById('dynamicTable').getElementsByTagName('tbody')[0];
-            var newRow = table.insertRow();
-
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            var cell3 = newRow.insertCell(2);
-
-            cell1.innerHTML = '<input type="text" placeholder="Nom">';
-            cell2.innerHTML = '<input type="number" placeholder="Âge">';
-            cell3.innerHTML = '<button class="deleteBtn">Supprimer</button>';
-
-            var deleteBtns = document.getElementsByClassName('deleteBtn');
-            for (var i = 0; i < deleteBtns.length; i++) {
-                deleteBtns[i].addEventListener('click', function() {
-                    this.parentElement.parentElement.remove();
-                });
-            }
-        });
+        // Exemple de données dynamiques
+        document.getElementById('salesValue').innerText = 1500;
+        document.getElementById('productsValue').innerText = 120;
+        document.getElementById('usersValue').innerText = 300;
+        document.getElementById('ordersValue').innerText = 75;
     </script>
 </body>
 </html>
