@@ -131,15 +131,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "blog/static"),
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Pour collecter les fichiers statiques
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "blog/static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Pour collecter les fichiers statiques
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
 
 
 # Default primary key field type

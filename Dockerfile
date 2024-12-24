@@ -1,4 +1,4 @@
-# Utiliser l'image officielle Python
+# Utiliser une image officielle Python
 FROM python:3.12.3
 
 # Créer un utilisateur et un groupe 'appuser', et créer un répertoire home
@@ -19,13 +19,9 @@ ENV PATH="/home/appuser/.local/bin:${PATH}"
 # Basculer vers l'utilisateur non-root
 USER appuser
 
-# Mettre à jour pip sans utiliser de cache
-RUN python -m pip install --no-cache-dir --upgrade pip
-
-# Installer les dépendances de l'application sans utiliser de cache
-RUN pip install --no-cache-dir -r /app/requirements.txt
-
-RUN pip install Pillow
+# Mettre à jour pip sans utiliser de cache et installer les dépendances
+RUN python -m pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r /app/requirements.txt
 
 # Exposer le port que l'application va utiliser
 EXPOSE 8000

@@ -4,3 +4,4 @@ gunicorn
 psycopg2-binary
 django-extensions
 django-cors-headers
+Pillow
