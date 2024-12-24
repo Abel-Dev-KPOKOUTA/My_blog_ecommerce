@@ -25,6 +25,8 @@ RUN python -m pip install --no-cache-dir --upgrade pip
 # Installer les dépendances de l'application sans utiliser de cache
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
+RUN pip install Pillow
+
 # Exposer le port que l'application va utiliser
 EXPOSE 8000
 
