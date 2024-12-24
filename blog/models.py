@@ -19,7 +19,10 @@ class Article(models.Model):
     def __str__(self):
         return self.title
     
-    
-    
+
 # categorie=models.ForeignKey(Category , on_delete=models.CASCADE) ==> Veut dire que si on supprime une categoriedonné tout les articles de cette categorie seront également supprimé ...
      
+class Commentaire(models.Model):
+    article_commenter=models.ForeignKey(Article , on_delete=models.CASCADE , null=True)
+    commentaire=models.CharField(max_length=500, blank=True)
+

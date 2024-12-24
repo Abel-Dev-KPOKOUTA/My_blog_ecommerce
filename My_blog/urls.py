@@ -8,5 +8,3 @@ urlpatterns = [
     path("blog/authentification/", include("app_authentification.urls")),
     path("blog/administration/", include("app_admin.urls")),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
