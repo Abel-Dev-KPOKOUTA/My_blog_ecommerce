@@ -6,10 +6,10 @@
         <div class="col-md-12">
             <div class="card mt-4">
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input class="btn btn-success btn-block" type="submit" value="Modifier l'article">
+                        <button class="btn btn-success btn-block" type="submit">Enregistrer</button>
                     </form>
                 </div>
             </div>
