@@ -1,11 +1,105 @@
 {% extends 'app_admin/base.html' %}
 
+
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Tableau de bord</h2>
-        </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Dynamique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tableau Dynamique</h1>
+        <table id="dynamicTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Âge</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Les lignes seront ajoutées ici dynamiquement -->
+            </tbody>
+        </table>
+        <button id="addRowBtn">Ajouter une ligne</button>
     </div>
-</div>
+    <script>
+        document.getElementById('addRowBtn').addEventListener('click', function() {
+            var table = document.getElementById('dynamicTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+
+            cell1.innerHTML = '<input type="text" placeholder="Nom">';
+            cell2.innerHTML = '<input type="number" placeholder="Âge">';
+            cell3.innerHTML = '<button class="deleteBtn">Supprimer</button>';
+
+            var deleteBtns = document.getElementsByClassName('deleteBtn');
+            for (var i = 0; i < deleteBtns.length; i++) {
+                deleteBtns[i].addEventListener('click', function() {
+                    this.parentElement.parentElement.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
 {% endblock %}

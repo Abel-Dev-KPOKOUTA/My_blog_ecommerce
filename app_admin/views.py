@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from blog.models import Article
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -43,15 +43,3 @@ class DeleteArticle(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 
     def handle_no_permission(self):
         return redirect('app_admin:permission')
-    
-@login_required
-def update_article(request, pk):
-    article = get_object_or_404(Article, pk=pk)
-    if request.method == "POST":
-        form = ArticleForm(request.POST, request.FILES, instance=article)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('app_admin:mes_articles'))
-    else:
-        form = ArticleForm(instance=article)
-    return render(request, 'app_admin/modifier_edit.html', {'form': form})
