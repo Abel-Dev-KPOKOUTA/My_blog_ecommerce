@@ -79,7 +79,7 @@
             <div class="card">
                 <h2>Produits</h2>
                 <p class="value" id="productsValue">0</p>
-                <p class="description">Total des produits</p>
+                <p class="description">Total des produits/articles </p>
             </div>
             <div class="card">
                 <h2>Utilisateurs</h2>
@@ -95,10 +95,10 @@
     </div>
     <script>
         // Exemple de données dynamiques
-        document.getElementById('salesValue').innerText = 1500;
-        document.getElementById('productsValue').innerText = 120;
-        document.getElementById('usersValue').innerText = 300;
-        document.getElementById('ordersValue').innerText = 75;
+        document.getElementById('salesValue').innerText = {{ totals_ventes }};
+        document.getElementById('productsValue').innerText = {{ totals_produits }};
+        document.getElementById('usersValue').innerText ={{ users_count }};
+        document.getElementById('ordersValue').innerText ={{ totals_commandes }};
     </script>
 </body>
 </html>

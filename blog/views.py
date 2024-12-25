@@ -19,6 +19,9 @@ def search(request):
     liste_de_recherche=Article.objects.filter(title__contains=query)
     return render(request,"blog/search.html", {"liste_de_recherche":liste_de_recherche})
 
+def contact(request):
+    return render(request,"blog/contact.html")
+
 
 '''
 article_en_relation est la liste qui contient tout les articles de la categorie de l'article sur lequel on a cliquer ...

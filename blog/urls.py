@@ -6,4 +6,5 @@ urlpatterns = [
     path("mon_site/accueil/" , views.afficher , name="afficher"),
     path("article/info/<int:id_article>/", views.afficher_info_article , name="article_info"),
     path('article/recherche/',views.search, name="rechercher"),
+    path('contact/administrateur/' , views.contact , name="contact_admin"),
 ]

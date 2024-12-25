@@ -6,9 +6,20 @@ from django.contrib.auth.decorators import login_required
 from blog.forms import ArticleForm
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.models import User
 
 def tableau_bord(request):
-    return render(request, "app_admin/index.html")
+    # Nombre totales d'utilisateurs 
+    users_count=User.objects.count()
+    # Nombre totales d'articles 
+    totals_produits=Article.objects.count()
+    # Nombres de ventes 
+    totals_ventes=0
+    # Nombres de commandes 
+    totals_commandes=0
+    context={"users_count":users_count,"totals_produits":totals_produits,"totals_ventes":totals_ventes,"totals_commandes":totals_commandes}
+
+    return render(request, "app_admin/index.html" ,context)
 
 @login_required
 def user_articles(request):
