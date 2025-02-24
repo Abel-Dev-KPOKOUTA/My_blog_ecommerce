@@ -64,9 +64,6 @@ h5 {
                 <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ article.image.url }}"></div>
                 <div class="col-md-6 mt-1">
                     <h5>{{ article.title }}</h5>
-                    <div class="d-flex flex-row">
-                        <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
-                    </div>
                     <div class="mt-1 mb-1 spec-1"><span>Publié il y a {{ article.created_at|timesince}}</span></div>
                     <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span></div>
                     <p class="text-justify text-truncate para mb-0">{{ article.description }}<br><br></p>
