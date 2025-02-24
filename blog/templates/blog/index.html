@@ -69,8 +69,10 @@ h5 {
                     <p class="text-justify text-truncate para mb-0">{{ article.description }}<br><br></p>
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                    </div>
                     <h6 class="text-success">Prix cadeau </h6>
-                    <div class="d-flex flex-column mt-4"><a href="{% url 'blog_site:article_info' article.id  %}" class="btn btn-primary btn-sm" type="button">Details</a><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
+                    <div class="d-flex flex-column mt-4"><a href="{% url 'blog_site:article_info' article.id  %}" class="btn btn-primary btn-sm" type="button">Details</a><button class="btn btn-outline-primary btn-sm mt-2" type="button">Ajouter au panier</button></div>
                 </div>
             </div>
             {% endfor %}
@@ -79,8 +81,10 @@ h5 {
 </div>
 {% endblock %}
 
-{% block pied_page %}
+<footer>
+    {% block pied_page %}
 
-{% include 'blog/footer.html' %}
-
-{% endblock %}
+    {% include 'blog/footer.html' %}
+    
+    {% endblock %}    
+</footer>

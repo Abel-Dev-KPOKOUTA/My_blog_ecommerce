@@ -7,9 +7,11 @@
   <!-- Contenu du site -->
 {% endblock %}
 
+<footer style="position: absolute; border: 0; top: 0; width: 100%; text-align: center; padding: 10px;">
+  {% block pied_page %}
 
-{% block pied_page %}
-
-{% include 'blog/footer.html' %}
-
-{% endblock %}
+  {% include 'blog/footer.html' %}
+  
+  {% endblock %}
+  
+</footer>

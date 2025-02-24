@@ -94,8 +94,14 @@
   <!-- Premier block pour introduit le corps des pages ... -->
   {% endblock%}
 
-  {% block pied_page %}
-  <!-- Deuxième block pour introduit le pied de page ... -->
-  {% endblock %}
+  
+{% block pied_page %}
+<footer>
+    {% include 'blog/footer.html' %}
+</footer>
+
+
+{% endblock %}    
+
 </body>
 </html>
