@@ -17,7 +17,7 @@ def afficher_info_article(request , id_article):
 def search(request):
     query=request.GET['article'] # Recuperation de la recherche et affichage de la recherche ...
     liste_de_recherche=Article.objects.filter(title__contains=query)
-    return render(request,"blog/search.html", {"liste_de_recherche":liste_de_recherche})
+    return render(request,"blog/search.html", {"liste_de_recherche":liste_de_recherche ,"query":query})
 
 def contact(request):
     return render(request,"blog/contact.html")

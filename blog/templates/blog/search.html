@@ -51,7 +51,7 @@ h5 {
 }
 </style>
 <div class="container mt-5 mb-5">
-    <h1 style="text-align: center;">Liste des recherches</h1>
+    <h1 style="text-align: center;">RESULTAT DE RECHERCHE : {{ query }}</h1>
     {% if liste_de_recherche %}
     <div class="d-flex justify-content-center row">
         <div class="col-md-10">
@@ -76,7 +76,6 @@ h5 {
     <p>Aucun resultats trouvé</p>
     {% endif %}
 </div>
-
 
 {% endblock %}
 
